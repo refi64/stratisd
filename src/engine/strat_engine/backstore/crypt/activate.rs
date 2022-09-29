@@ -63,7 +63,8 @@ impl CryptActivationHandle {
                                 None,
                                 Some(keyslot),
                                 pass.as_ref(),
-                                CryptActivate::empty(),
+                                CryptActivate::NO_READ_WORKQUEUE
+                                    | CryptActivate::NO_WRITE_WORKQUEUE,
                             ),
                             "libcryptsetup reported that the decrypted Clevis passphrase \
                             is unable to open the encrypted device"

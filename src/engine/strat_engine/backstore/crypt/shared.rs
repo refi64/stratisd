@@ -640,7 +640,7 @@ fn activate_with_keyring(crypt_device: &mut CryptDevice, name: &str) -> StratisR
             Some(name),
             Some(LUKS2_TOKEN_ID),
             None,
-            CryptActivate::empty(),
+            CryptActivate::NO_READ_WORKQUEUE | CryptActivate::NO_WRITE_WORKQUEUE,
         ),
         "Failed to activate device with name {}",
         name
@@ -884,7 +884,7 @@ pub fn check_luks2_token(device: &mut CryptDevice) -> StratisResult<()> {
             None,
             Some(LUKS2_TOKEN_ID),
             None,
-            CryptActivate::empty(),
+            CryptActivate::NO_READ_WORKQUEUE | CryptActivate::NO_WRITE_WORKQUEUE,
         ),
         "libcryptsetup reported that the LUKS2 token is unable to \
         open the encrypted device; this could be due to a malformed \
